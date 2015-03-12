@@ -4,7 +4,7 @@
 
 from urllib2 import urlopen, URLError
 
-__author__ = 'pzp1997'
+__author__ = 'Palmer (pzp1997)'
 __version__ = '1.0.4'
 __email__ = 'pzpaul2002@yahoo.com'
 

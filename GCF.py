@@ -5,7 +5,7 @@ two numbers using the Euclidean Algorithm"""
 
 from sys import argv
 
-__author__ = 'Palmer Paul'
+__author__ = 'Palmer (pzp1997)'
 __version__ = '1.0.0'
 __email__ = 'pzpaul2002@yahoo.com'
 

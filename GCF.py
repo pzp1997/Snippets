@@ -6,20 +6,26 @@ two numbers using the Euclidean Algorithm"""
 from sys import argv
 
 __author__ = 'Palmer (pzp1997)'
-__version__ = '1.0.0'
+__version__ = '1.0.1'
 __email__ = 'pzpaul2002@yahoo.com'
 
-def gcf(a, b):
+def euclid_gcf(a, b):
     while True:
         a, b = b, a%b
         if b == 0:
             return a
 
 def main():
-    if len(argv) != 3 or not argv[1].isdigit() or not argv[2].isdigit():
-        print 'Usage: gcf.py num1 num2'
+    if len(argv) < 2:
+        print "Usage: gcf.py num ..."
     else:
-        print gcf(int(argv[1]), int(argv[2]))
+        for i in range(1, len(argv)):
+            try:
+                argv[i] = abs(int(argv[i]))
+            except ValueError:
+                print "Usage: gcf.py num ..."
+                raise SystemExit
+        print reduce(euclid_gcf, argv[1:])
 
 if __name__ == '__main__':
     main()

@@ -4,7 +4,7 @@ Capture cam;
 PImage filteredImg;
 color selectedColor;
 int threshold;
-boolean showFiltered;
+boolean showFiltered, blackAndWhite;
 
 void setup() {
   size(400, 400);
@@ -19,6 +19,8 @@ void setup() {
   filteredImg = createImage(width, height, RGB);
 
   threshold = 10;
+  
+  blackAndWhite = true;
 }
 
 void draw() {
@@ -51,9 +53,18 @@ void keyPressed() {
         threshold--;
         println("Threshold: " + threshold);
         break;
+      case SHIFT:
+        blackAndWhite = false;
+        break;
     }
   } else if (key == ' ') {
     showFiltered = !showFiltered;
+  }
+}
+
+void keyReleased() {
+  if (key == CODED && keyCode == SHIFT) {
+    blackAndWhite = true;
   }
 }
 
@@ -69,9 +80,10 @@ void isolateColor(PImage inImg, PImage outImg, color inClr, int thresh) {
       abs(green(clr) - green(inClr)) > thresh ||
       abs(blue(clr) - blue(inClr)) > thresh) {
       outImg.pixels[i] = color(0);
+    } else if (blackAndWhite) {
+      outImg.pixels[i] = color(255);
     } else {
       outImg.pixels[i] = clr;
-      // println(colorToString(clr));
     }
   }
 

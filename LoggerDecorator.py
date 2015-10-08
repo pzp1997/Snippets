@@ -29,7 +29,7 @@ def logger(func):
 @logger
 def foo(*args, **kwargs):
     """Returns True if passed an even number of arguments, False otherwise."""
-    return (len(args) + len(kwargs)) & 1 == 0
+    return not (len(args) + len(kwargs)) & 1
 
 if __name__ == '__main__':
     foo()

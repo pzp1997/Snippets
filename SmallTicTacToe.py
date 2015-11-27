@@ -8,7 +8,7 @@ while 1:
     if b[c]==0:
         b[c]=t
         if any(all(r==t)for r in b)or any(all(b[:,c]==t)for c in range(s))or all(b[i,i]==t for i in range(s))or all(b[i,s-i-1]==t for i in range(s)):
-            print 'XO'[t-1] + " wins!"
+            print 'XO'[t-1]+" wins!"
             break
         if (b!=0).all():
             print "Tie!"
